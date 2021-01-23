@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>👀Interesting Grades There</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="/css/tables.css">
+<link rel="stylesheet" href="/css/logout.css">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="grades">
+    <section>
+    {% for class in classes %}
+  <h1>{{class}} : {{ grades[class]['average'] }} </h1>
+  <h1>  </h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Assignment</th>
+          <th>Score</th>
+          <th>Max Points</th>
+          <th>Type of Grade</th>
+          <th>Due Date</th>
+          <th>Date Assigned</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+	  		{% for k, v in grades[class].items() %}
+
+        <tr>
+			
+			{% if k != "average" %}
+				
+				<td> {{ k }} </td>
+				
+			{% endif %}
+			
+			
+          <td>{{ v['score'] }}</td>
+          <td>{{ v['max_points'] }}</td>
+          <td>{{ v['type_of_grade'] }}</td>
+          <td>{{ v['due_date'] }}</td>
+          <td>{{ v['date_assigned'] }}</td>
+	
+        </tr>
+
+		 {% endfor %}
+		
+      </tbody>
+    </table>
+	
+  </div>
+
+{% endfor %}
+
+</section>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> <script  src="{{url_for('static', filename='script.js')}}"></script>
+
+
+<script>
+  function logout(){
+    window.location.pathname = '/'
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "link=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "remember=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
+
+</script>
+
+
+
+<div class="container">
+  
+  <button  onclick="logout()" class="btn btn-1">
+    <svg>
+      <rect x="0" y="0" fill="none" width="200%" height="100%"/>
+    </svg>
+    
+   Log Out
+  </button>
+
+  
+</div>
+
+</div>

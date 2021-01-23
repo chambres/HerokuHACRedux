@@ -1,0 +1,9 @@
+mechanize==0.4.5
+bs4==0.0.1 
+beautifulsoup4==4.7.1  
+Flask==0.12.2
+requests==2.21.0    
+gunicorn==19.9.0 
+Jinja2==2.10.1
+lxml==4.5.1 
+Werkzeug==0.16
